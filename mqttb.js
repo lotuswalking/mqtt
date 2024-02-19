@@ -12,18 +12,15 @@ function printMessage(message) {
 client.on('connect', () => {
   console.log('Connected to MQTT broker');
 
-  
   setInterval(() => {
-      const message = 'Hello, MQTT! I\'m MQtt! '; // Your message to publish
-      publishTopic = "out-topic"
-      
+      const message = 'Hello, MQTT! MQTT! I\'m MQtt! B'; // Your message to publish
+      publishTopic = "in-topic"
       client.publish(publishTopic, message);
       // console.log(`Published message on topic ${publishTopic}: ${message}`);
       printMessage(`Published message on topic ${publishTopic}: ${message}`)
+    }, 5000); // 60000 milliseconds = 1 minute
 
-    }, 6000); // 60000 milliseconds = 1 minute
-
-  const topicToSubscribe = 'in-topic';
+  const topicToSubscribe = 'out-topic';
 
     client.subscribe(topicToSubscribe, (err) => {
         if (!err) {
